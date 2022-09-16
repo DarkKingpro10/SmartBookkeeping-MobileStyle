@@ -4446,3 +4446,17 @@ input {
   padding-top: 15px;
   margin-bottom: 0;
 }
+@media (max-width: 600px) {
+  .rpt_boostrap{
+    margin-left: 0 !important;
+  }
+}
+.slidexplode{
+  transition:all 2s ease-in-out;
+  display: none;
+}
+
+
+.slidexplode.open{
+  display: table-row;
+}

@@ -43,9 +43,6 @@ function comprobarAmin() {
 
 //Inicializando componentes de Materialize
 document.addEventListener('DOMContentLoaded', function () {
-    let optionbtn = {
-        direction: 'left'
-    }
     comprobarAmin();
     cargarTabla();
 });
@@ -82,7 +79,6 @@ const expand = () => {
                     let tb2 = tb.lastElementChild.getAttribute("id");
                     let form = new FormData();
                     form.append('idemp', tb2);
-                    console.log('ho');
                     //Cargamos las empresas de ese empleado
                     fetch(API_EMPRESAS + 'readEmprAsg', {
                         method: 'post',
@@ -111,7 +107,7 @@ const expand = () => {
                                     // Se inicializa el componente Material Box para que funcione el efecto Lightbox.
                                     M.Materialbox.init(document.querySelectorAll('.materialboxed'));
                                 }else{
-                                    console.log(response.exception);
+                                    sweetAlert('2',response.exception,null);
                                 }
                             });
                         } else {
@@ -189,3 +185,8 @@ function fillTable(dataset) {
     M.Tooltip.init(document.querySelectorAll('.tooltipped'));
     expand();
 }
+
+//Evento para que regrese a la página anterior
+document.getElementById('regresarbtn-perfil').addEventListener('click', function () {
+    history.go(-1)
+});

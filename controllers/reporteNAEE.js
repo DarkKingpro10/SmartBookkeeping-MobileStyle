@@ -37,6 +37,8 @@ window.onscroll = function () {
     }
 };
 
+
+
 // Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
 function fillTable(dataset) {
     let content = '';
