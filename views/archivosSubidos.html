@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link type="text/css" rel="stylesheet" href="../resources/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../resources/css/styles.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <!--Importando las fuentes de google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!--Icono del sitio web-->
+    <link rel="icon" href="../resources/icons/icono-web.png">
+    <title>Archivos Subidos/Empleados</title>
+</head>
+
+<body>
+
+    <header>
+        <!--Navbar-->
+        <div class="navbar-fixed">
+            <nav class="navbar-contenedor z-depth-3">
+                <div class="nav-wrapper">
+                    <!--Titulo del apartado-->
+                    <a href="#!" class="brand-logo center titulo-nav"><span>Archivos-subidos</span></a>
+                    <!--Boton para el sidenav responsive-->
+                    <a href="#" data-target="side-navbarcont" class="sidenav-trigger"><i
+                            class="material-icons menuicon-navbar">menu</i></a>
+                    <!--Apartado del usuario y logou-->
+                    <ul class="right hide-on-small-and-down opciones-navbar">
+                        <!--Usuario solo para tablets y computadoras-->
+                        <li><a class="waves-effect waves-light tooltipped" data-position="bottom"
+                                data-tooltip="Ver el perfil" href="perfil.html" id="username-navbar">User1<i
+                                    class="material-icons right usericon-apartadot">person</i></a>
+                        </li>
+                        <!--Boton de logout solo para tablets y computadoras-->
+                        <li><a href="#cerrarSesionModal" class="logout-navbar tooltipped modal-trigger"
+                                data-position="bottom" data-tooltip="Cerrar Sesión"><img class="responsive-img"
+                                    src="../resources/icons/logout-icon-navbar.png"></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!--Sidenav-->
+        <ul id="side-navbarcont" class="sidenav sidenav-fixed">
+            <!--Icono de la empresa-->
+            <li>
+                <div class="icono-sidenav">
+                    <img class="responsive-image" src="../resources/img/logo-sidenav.png">
+                </div>
+            </li>
+            <!--Menu de opciones-->
+            <li>
+                <div class="menuopciones-sidenav">
+                    <!--Boton de Inicio-->
+                    <a class="row waves-effect  botones-sidenav" href="inicio.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/inicio-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Inicio
+                        </div>
+                    </a>
+                    <!--Boton de Empleados-->
+                    <a class="row waves-effect  botones-sidenav" href="empleados.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/empleados-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Empleados
+                        </div>
+                    </a>
+                    <!--Boton de Archivos subidos-->
+                    <a class="row waves-effect  botones-sidenav" href="archivos-subidos.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/archivossub-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Archivos Subidos
+                        </div>
+                    </a>
+                    <!--Boton de Empresas-->
+                    <a class="row waves-effect  botones-sidenav" href="empresas.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/empresas-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Empresas
+                        </div>
+                    </a>
+                    <!--Boton de Perfil solo para telefonos-->
+                    <a class="row waves-effect hide-on-med-and-up botones-sidenav" href="perfil.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img user-icon" src="../resources/icons/user-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav-nav">
+                            <span>user1</span>
+                        </div>
+                    </a>
+                    <!--Boton de logout solo para telefonos-->
+                    <a class="row waves-effect hide-on-med-and-up botones-sidenav modal-trigger"
+                        href="#cerrarSesionModal">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img user-icon" src="../resources/icons//logout-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav-nav">
+                            Cerrar Sesión
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <!--Diseño de confirmación de eliminar archivos-->
+        <div id="eliminar-archivomodal" class="modal">
+            <div class="fondo-modaldatos modal-content">
+                <!--Botón para confirmar si desea eliminar el archivo permanentemente-->
+                <div class="center-align">
+                    <h4>Confirmar Elminación del Archivo</h4>
+                    <p>¿Desea eliminar el archivo permanentemente?</p>
+                </div>
+                <!--Preloader de la actualización de los datos del perdil-->
+                <div class="preloader-wrapper active" id="confirmareliminarempr_preloader">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenido importante del modal-Boton de actualizar-->
+                <div class="center-align">
+                    <a href="#!" class="waves-effect waves-light btn center-align"
+                        id="aceptareliminarempresa_boton">Eliminar
+                        archivo</a>
+                </div>
+                <!--Pie del modal-->
+                <div class="modal-footer" id="fondomodal-footer">
+                    <div class="left col offset-s1 m5 l4">
+                        <a class="waves-effect waves-ligth btn z-depth-2 modal-close cancelarEliminarempre"
+                            id="cancelar-eliminarempr">
+                            <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal de Añadir Archivos Subidos-->
+        <!--Modal de Añadir Archivo-->
+        <div id="anadir-archivoarh" class="modal">
+            <div class="modal-content">
+                <!--Titulo del modal-->
+                <h4 class="center-align" id="titulo_modal">Añadir Archivo</h4>
+                <!--Indicaciones del modal-->
+                <p class="center-align" id="indicacion_modal">Añada un archivo, este se guardará con el nombre que lo suba <b>¡No todos los
+                        archivos podran visualizarse!, los podrá descargar despues pero se recomienda eliminar tras
+                        descargar para no acumular</b></p>
+                <!--Formulario para añadir una empresa-->
+                <form method="post" id="archForm" enctype="multipart/form-data">
+                    <!--Fila del formulario-->
+                    <div class="row filaform-archivo">
+                        <!--Seleccionar la empresa a la que posee acceso-->
+                        <div class="input-field col s12 m5 offset-m1 l5 selects-form" id="selectemp_cont">
+                            <select id="empresas_select" name="empresa">
+                                <option value="" disabled selected>¿A que empresa pertenece?</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label class="labels-anadirempr">Selecciona empresa</label>
+                        </div>
+                        <!--Nombre del empleado-->
+                        <div class="input-field col s12 m5 l4" id="nombre_empcont">
+                            <input placeholder="Nombre Empleado" id="nombre_emp" type="text"
+                                class="validate center-align inputs-añadirempr " disabled>
+                            <label for="nombre_emp" class="labels-anadirempr">Nombre del empleado:</label>
+                        </div>
+                        <!--Fecha de subida-->
+                        <div class="input-field col s12 m6 offset-m3 l3" id="fecha_cont">
+                            <input placeholder="Fecha en que se subio el archivo" id="fecha" type="text"
+                                class="validate center-align inputs-añadirempr " disabled>
+                            <label for="fecha" class="labels-anadirempr">Fecha de subida:</label>
+                        </div>
+                        <!--Nombre del empleado-->
+                        <div class="input-field col s12 m5 offset-m1 l6 hide">
+                            <input placeholder="Nombre Empleado" id="id_arch" type="text"
+                                class="validate center-align inputs-añadirempr">
+                        </div>
+                        <!--Descripción del archivo-->
+                        <div class="input-field col s12 m10 offset-m1 l12">
+                            <textarea placeholder="Descripción del archivo a subir" id="descripcion" type="text"
+                                class="materialize-textarea center-align inputs-añadirempr" name="descripcion"></textarea>
+                            <label for="descripcion" class="labels-anadirempr">Descripción:</label>
+                        </div>
+                        <!--Input de agregar archivo-->
+                        <div class="file-field input-field col s12" id="fila-agregararch">
+                            <div class="btn agregararchivoarh col s12 m3 offset-m1 l2">
+                                <i class="material-icons">insert_drive_file</i>
+                                <span>Archivo</span>
+                                <input type="file" id="archivosubido-arch" name="archivo">
+                            </div>
+                            <div class="file-path-wrapper col s12 m7 l10  inputarh-texto">
+                                <input class="file-path inputs-añadirempr" type="text" disabled id="nombreArchivo-input"
+                                    name="archivo_nombre">
+                            </div>
+                        </div>
+                        <div class="progress" id="barraraprg-garch">
+                            <div class="indeterminate"></div>
+                        </div>
+                        <!--Input de previsualizar archivo-->
+                        <div class="preview-file col" id="preview-col">
+                            <img src="../resources/img/previsualizar-img.png" alt="Previsualizar Imagen"
+                                class="responsive-image imagen-previmg" id="imagen-Preview">
+                            <span class="texto-previmg" id="texto-prevw">Previsualizador de Archivos</span>
+                            <embed src="" width="100%" height="500" id="prevPDF-arh" />
+                        </div>
+                    </div>
+                </form>
+                <div class="row filabtn-añadirarh">
+                    <div class="center">
+                        <a class="waves-effect waves-ligth btn z-depth-2" id="btn-añadirArchivoarhModal">
+                            <i class="material-icons left">add</i><span id="titulo_guardarbtn">Subir Archivo</span>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="left col offset-s1 m5 l4">
+                            <a class="waves-effect waves-ligth btn z-depth-2 modal-close cerrarModalEmpresa"
+                                id="cancelar-Añadirempr">
+                                <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                            </a>
+                        </div>
+                        <div class="left col s12 m7 l4 center-align mensaje-modal">
+                            <h6 id="mensaje-anadirarh">¡Verifique que los campos no esten vacios!</h6>
+                        </div>
+                        <div class="center col s12 m3 l4" id="preloader-añadirarh">
+                            <div class="preloader-wrapper active">
+                                <div class="spinner-layer spinner-red-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row upload-files-section">
+            <!-- Parte de arriba donde muestra la parte de volver a la página de atrás y el buscador -->
+            <div class="col l3 m12 s12 direction-container">
+                <div class="direction">
+                    <p>Volver | </p><img src="../resources/icons/home-icon.png" alt="">
+                    <p> > Archivos </p>
+                </div>
+            </div>
+            <!--Formulario que pregunta si desea añadir un nuevo archivo-->
+            <form action="post" class="col l7 m12 s12 frm-files" id="buscador_form">
+                <div class="row searcher-row">
+                    <div class="col l6">
+                        <!--Contenedor donde pregunta si desea buscar nuevos archivos y así hacer una busqueda dinámica de ellos-->
+                        <div class="file-searcher">
+                            <img class="responsive-img" src="../resources/icons/search-icon.png" alt="">
+                            <input id="input-file" type="text" placeholder="Buscar archivos" name="search">
+                        </div>
+                    </div>
+                    <!--Botón de añadir archivos utilizando un modal trigger de Materialize-->
+                    <div class="col l6">
+                        <a class="btn-add btn" onclick="crearArch()" id="anadir_archivo"><i
+                                class=" material-icons left">add</i>Añadir
+                            archivos</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!--Fila para los reportes-->
+        <div class="row">
+            <div class="col s12 m6 l6 center tooltipped" data-tooltip="Resumen de los archivos subidos por el usuario logueado">
+                <p>Resumen de tus archivos subidos</p>
+                <a class="waves-effect waves-ligth btn z-depth-3 btn_estilizado" href="../api/reports/resumenArchivosS.php" target="_blank">
+                    <i class="material-icons left">assignment</i>Abrir reporte
+                </a>
+            </div>
+            <div class="col s12 m6 l6 center tooltipped eliminarbtn" data-tooltip="Resumen de los archivos subidos por el usuario logueado">
+                <p>Resumen de los empleados que subieron archivos en x fechas</p>
+                <a class="waves-effect waves-ligth btn z-depth-3 btn_estilizado" id="reporteFAE">
+                    <i class="material-icons left">assignment</i>Abrir reporte
+                </a>
+            </div>
+        </div>
+        <div class="row eliminarbtn">
+            <div class="col s12 m6 center tooltipped" data-tooltip="Todos los empleados y el tipo de empleado que más archivos han registrados">
+                <p>Empleados con más registros de archivos</p>
+                <a class="waves-effect waves-ligth btn z-depth-3 btn_estilizado" href="../api/reports/registroArchivos.php" target="_blank">
+                    <i class="material-icons left">assignment</i>Abrir reporte
+                </a>
+            </div>
+        </div>
+        <!--Contenedor principal del buscador de empresas-->
+        <div class="row upload-files">
+            <div class="col l5 m10 search-box">
+                <div class="wrapper">
+                    <div class="search-input">
+                        <form id="buscador_empr">
+                            <div class="company-search-box">
+                                <input type="text" placeholder="Buscar empresa" name="search" id="company-searcher">
+                                <img class="responsive-img" src="../resources/icons/search-icon.png" alt="">
+                            </div>
+                        </form>
+                        <!--Empreas tomadas como ejemplo para que carguen del buscador-->
+                        <div class="autocom-box" id="cont_empresas">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Contenedor de la parte de archivos y así pueda cargarlos dependiendo de que empresa se escoja-->
+            <div class="col l7 center m7 container-files" id="archivo_cont">
+                <!--Contenedor del archivo-->
+                <div class="file-container">
+                    
+                </div>
+            </div>
+            <!--Diseño de logout-->
+            <div id="cerrarSesionModal" class="modal">
+                <div class="fondo-modaldatos modal-content">
+                    <div class="center-align">
+                        <!--Texto que muestra si desea cerrar sesión o no-->
+                        <h4>Confirmación de cerrar sesión</h4>
+                        <p>¿Desea cerrar sesión?</p>
+                    </div>
+                    <!--Contenido importante del modal-Boton de actualizar-->
+                    <div class="center-align">
+                        <a href="index.html" class="waves-effect waves-light btn center-align"
+                            id="cerrarSesionModalbtn">Cerrar Sesión</a>
+                    </div>
+                    <!--Pie del modal-->
+                    <div class="modal-footer" id="fondomodal-footer">
+                        <div class="left col offset-s1 m9 l8">
+                            <a class="waves-effect waves-ligth btn z-depth-2 modal-close cancelarEliminarempre"
+                                id="cancelar-cerrarSesion">
+                                <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Preloader de carga-->
+            <div class="preloader-wrapper big active" id="preloader-cargarJ">
+                <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <!--Botpin Fixed Action para poder dirigrse a la parte de arriba automáticamente-->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large" id="hasta_arriba">
+            <!--ícono sacado de google icons de una flechita para arriba-->
+            <i class="large material-icons">arrow_upward</i>
+        </a>
+        <ul>
+    </div>
+
+    <footer>
+        <!--Contenedor del menu para la páginación-->
+        <div class="container">
+            <div class="row">
+                <div class="col s2 offset-s2 m2 offset-m2 l1 offset-l4 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center" id="pagnavg-atr">
+                        <a class="tooltipped" data-position="left" data-tooltip="Regresar página anterior"><i
+                                class="material-icons medium">chevron_left</i></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center contnpag">
+                        <a><span class="pagnavg" id="pagnumeroi">1</span></a>
+                    </div>
+                </div>
+                <div class="col s2  m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center contnpag">
+                        <a><span class="pagnavg" id="pagnumerof">2</span></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center tooltipped" data-position="top" data-tooltip="¡Más muy pronto!">
+                        <a><span>...</span></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center" id="pagnavg-adl">
+                        <a class="tooltipped" data-position="right" data-tooltip="Página siguiente"><i
+                                class="material-icons medium">chevron_right</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="../resources/js/materialize.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../controllers/components.js"></script>
+    <script type="text/javascript" src="../controllers/validaciones.js"></script>
+    <script type="text/javascript" src="../controllers/online.js"></script>
+    <script src="../controllers/archivosSubidos.js"></script>
+</body>
+
+</html>

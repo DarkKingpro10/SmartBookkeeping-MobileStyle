@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styles.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <!--Importando las fuentes de google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!--Icono del sitio web-->
+    <link rel="icon" href="../resources/icons/icono-web.png">
+    <title>Empleados</title>
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <div class="navbar-fixed">
+            <nav class="navbar-contenedor z-depth-3">
+                <div class="nav-wrapper">
+                    <!--Titulo del apartado-->
+                    <a href="#!" class="brand-logo center titulo-nav"><span>Empleados</span></a>
+                    <!--Boton para el sidenav responsive-->
+                    <a href="#" data-target="side-navbarcont" class="sidenav-trigger"><i
+                            class="material-icons menuicon-navbar">menu</i></a>
+                    <!--Apartado del usuario y logou-->
+                    <ul class="right hide-on-small-and-down opciones-navbar">
+                        <!--Usuario solo para tablets y computadoras-->
+                        <li><a class="waves-effect waves-light tooltipped" data-position="bottom"
+                                data-tooltip="Ver el perfil" href="perfil.html" id="username-navbar">User1<i
+                                    class="material-icons right usericon-apartadot">person</i></a>
+                        </li>
+                        <!--Boton de logout solo para tablets y computadoras-->
+                        <li><a href="#cerrarSesionModal" class="logout-navbar tooltipped modal-trigger"
+                                data-position="bottom" data-tooltip="Cerrar Sesión"><img class="responsive-img"
+                                    src="../resources/icons/logout-icon-navbar.png"></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!--Sidenav-->
+        <ul id="side-navbarcont" class="sidenav sidenav-fixed">
+            <!--Icono de la empresa-->
+            <li>
+                <div class="icono-sidenav">
+                    <img class="responsive-image" src="../resources/img/logo-sidenav.png">
+                </div>
+            </li>
+            <!--Menu de opciones-->
+            <li>
+                <div class="menuopciones-sidenav">
+                    <!--Boton de Inicio-->
+                    <a class="row waves-effect  botones-sidenav" href="inicio.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/inicio-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Inicio
+                        </div>
+                    </a>
+                    <!--Boton de Empleados-->
+                    <a class="row waves-effect  botones-sidenav" href="empleados.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/empleados-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Empleados
+                        </div>
+                    </a>
+                    <!--Boton de Archivos subidos-->
+                    <a class="row waves-effect  botones-sidenav" href="archivos-subidos.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/archivossub-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Archivos Subidos
+                        </div>
+                    </a>
+                    <!--Boton de Empresas-->
+                    <a class="row waves-effect  botones-sidenav" href="empresas.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img" src="../resources/icons/empresas-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav">
+                            Empresas
+                        </div>
+                    </a>
+                    <!--Boton de Perfil solo para telefonos-->
+                    <a class="row waves-effect hide-on-med-and-up botones-sidenav" href="perfil.html">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img user-icon" src="../resources/icons/user-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav-nav">
+                            <span>user1</span>
+                        </div>
+                    </a>
+                    <!--Boton de logout solo para telefonos-->
+                    <a class="row waves-effect hide-on-med-and-up botones-sidenav modal-trigger"
+                        href="#cerrarSesionModal">
+                        <div class="col s6" id="icono-opcion-sidenav">
+                            <img class="responsive-img user-icon" src="../resources/icons//logout-icon-sidenav.png">
+                        </div>
+                        <div class="col s6" id="texto-opcion-sidenav-nav">
+                            Cerrar Sesión
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <main id="main-empleado">
+        <!--Modal de Añadir Archivo-->
+        <div id="modal-template" class="modal">
+            <div class="modal-content">
+                <!--Titulo del modal-->
+                <h4 class="center-align" id="modal-title"></h4>
+                <!--Formulario para añadir una empresa-->
+                <form class="row" method="post" id="save-form" enctype="multipart/form-data" autocomplete="off">
+                    <!--Fila del formulario-->
+                    <div class="row filaform-archivo">
+                        <!--Nombre del usuario-->
+                        <div class="input-field col s12 m10 offset-m1 l6 hide" id="input-id">
+                            <input name="id" id="id" type="text" class="validate  inputs-añadirempr">
+                            <label for="id" class="labels-anadirempr">Id del empleado</label>
+                        </div>
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="Usuario" name="usuario-emp" id="usuario-emp" type="text"
+                                class="validate  inputs-añadirempr" required>
+                            <label for="usuario-emp" class="labels-anadirempr">Usuario</label>
+                        </div>
+                        <!--Telefono del empleado-->
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="Teléfono" name="telefono-emp" id="telefono-emp" type="text"
+                                class="validate inputs-añadirempr" required maxlength="9">
+                            <label for="telefono-emp" class="labels-anadirempr">Teléfono:</label>
+                        </div>
+                        <!--Contraseña del usuario-->
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="Contraseña" name="contra-emp" id="contra-emp" type="password"
+                                class="validate  inputs-añadirempr" required>
+                            <label for="contra-emp" class="labels-anadirempr">Contraseña</label>
+                        </div>
+                        <!--Contraseña del usuario-->
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="Confirme contraseña" name="contrac-emp" id="contrac-emp" type="password"
+                                class="validate  inputs-añadirempr" required>
+                            <label for="ccontrac-emp" class="labels-anadirempr">Confirmar contraseña</label>
+                        </div>
+                        <!--Nombre del empleado-->
+                        <div class="input-field col s12 m5 offset-m1 l6">
+                            <input placeholder="Nombre" name="nombre-emp" id="nombre-emp" type="text"
+                                class="validate inputs-añadirempr" required>
+                            <label for="nombre-emp" class="labels-anadirempr">Nombre:</label>
+                        </div>
+                        <!--Apellidos del empleado-->
+                        <div class="input-field col s12 m5 l6">
+                            <input placeholder="Apellidos" name="apellido-emp" id="apellido-emp" type="text"
+                                class="validate inputs-añadirempr" required>
+                            <label for="apellido-emp" class="labels-anadirempr">Apellidos:</label>
+                        </div>
+                        <!--DUI del empleado-->
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="DUI" name="dui-emp" id="dui-emp" type="text"
+                                class="validate inputs-añadirempr" required maxlength="10">
+                            <label for="dui-emp" class="labels-anadirempr">DUI:</label>
+                        </div>
+                        <!--Correo del empleado-->
+                        <div class="input-field col s12 m10 offset-m1 l6">
+                            <input placeholder="Correo" name="correo-emp" id="correo-emp" type="email"
+                                class="validate  inputs-añadirempr" required>
+                            <label for="correo-emp" class="labels-anadirempr">Correo</label>
+                        </div>
+                        <!--Tipo del empleado-->
+                        <div class="select-tipo-empleado input-field col s12 m10 offset-m1 l6 center-align">
+                            <!--Select box para escoger el tipo de empleado-->
+                            <select id="tipo-de-empleado" name="tipo-de-empleado">
+                                <option value="" disabled selected>¿Qué tipo de empleado es?</option>
+
+                            </select>
+                            <!--Label sobre tipo de empleado-->
+                            <label>Selecciona tipo de empleado</label>
+                        </div>
+                        <!--Estado del cliente-->
+                        <div class="switch col m7 l6 s12 switch-container redd" id="estado_check">
+                            <span><b>Estado:&nbsp&nbsp</b></span>
+                            <label class="label_check">
+                                Bloqueado
+                                <input type="checkbox" name="estado" class="check-color lleno" id="estadoEmp">
+                                <span class="lever"></span>
+                                Activo
+                            </label>
+                        </div>
+                        <!--Barra de carga-->
+                        <div class="progress" id="barraraprg-garch">
+                            <div class="indeterminate"></div>
+                        </div>
+
+                    </div>
+                    <div class="row filabtn-añadirarh">
+                        <div class="center">
+                            <button type="submit" class="waves-effect waves-ligth btn z-depth-2"
+                                id="btn-añadirArchivoarhModal">
+                                <i class="material-icons left">add</i><span id="texto_guardar">Añadir Empleado</span>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="left col offset-s1 m5 l4">
+                                <a class="waves-effect waves-ligth btn z-depth-2 modal-close cerrarModalEmpresa"
+                                    id="cancelar-Añadirempr">
+                                    <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                                </a>
+                            </div>
+                            <!--Validación para verificar que los campos no estén vacios-->
+                            <div class="left col s12 m7 l4 center-align mensaje-modal">
+                                <h6 id="mensaje-anadirarh">¡Verifique que los campos no esten vacios!</h6>
+                            </div>
+                            <!--Cargar preloader de añadir-->
+                            <div class="center col s12 m3 l4" id="preloader-añadirarh">
+                                <div class="preloader-wrapper active">
+                                    <div class="spinner-layer spinner-red-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--Añadir empleado-->
+
+            </div>
+        </div>
+        <!--Diseño de confirmación de eliminar empleados-->
+        <div id="eliminar-empleadoomodal" class="modal">
+            <div class="fondo-modaldatos modal-content">
+                <div class="center-align">
+                    <h4>Confirmar Elminación del Empleado</h4>
+                    <p>¿Desea eliminar el empleado permanentemente?</p>
+                </div>
+                <!--Preloader de la actualización de los datos del perdil-->
+                <div class="preloader-wrapper active" id="confirmareliminarempr_preloader">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenido importante del modal-Boton de actualizar-->
+                <div class="center-align">
+                    <a href="#!" class="waves-effect waves-light btn center-align"
+                        id="aceptareliminarempresa_boton">Eliminar
+                        empleado</a>
+                </div>
+                <!--Pie del modal-->
+                <div class="modal-footer" id="fondomodal-footer">
+                    <div class="left col offset-s1 m5 l4">
+                        <a class="waves-effect waves-ligth btn z-depth-2 modal-close cancelarEliminarempre"
+                            id="cancelar-eliminarempr">
+                            <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="row upload-files-section">
+            <!-- Parte de arriba donde muestra la parte de volver a la página de atrás y el buscador -->
+            <div class="col l12 m12 s12 xl6 pull-xl1">
+                <div class=" direction">
+                    <p>Volver | </p><img src="../resources/icons/home-icon.png" alt="">
+                    <p> > Empleados</p>
+                </div>
+            </div>
+            <!--Formulario para buscar empleados-->
+            <form class="col xl6 l12 m12 s12 frm-employee" id="search-form">
+                <div class="col offset-l2 offset-m2 offset-s1 l8 s12 m7 xl6">
+                    <div class="file-searcher">
+                        <img class="responsive-img" src="../resources/icons/search-icon.png" alt="">
+                        <input id="input-file" name="input-file" type="text" placeholder="Buscar empleados">
+                    </div>
+                </div>
+                <div class="col l10 s12 m7 xl6 left-align">
+                    <a class="btn-add-emp btn modal-trigger" href="#modal-template" onclick="openCreate()"><i
+                            class="material-icons left">add</i>Añadir
+                        empleado</a>
+                </div>
+            </form>
+        </section>
+        <div class="row">
+            <div class="col s12 m6 center tooltipped" data-tooltip="Lista de los empleados que no poseen acceso a ninguna empresa">
+                <p>Todos los empleados que no posean acceso a ninguna empresa</p>
+                <a class="waves-effect waves-ligth btn z-depth-3 btn_estilizado" href="../api/reports/accesoEmpleadosEmp.php" target="_blank">
+                    <i class="material-icons left">assignment</i>Abrir Reporte
+                </a>
+            </div>
+            <div class="col s12 m6 center tooltipped" data-tooltip="Lista de los empleados y las empresas a las que poseen acceso">
+                <p>Todos los empleados que posean acceso a almenos una empresa</p>
+                <a class="waves-effect waves-ligth btn z-depth-3 btn_estilizado" href="../api/reports/accesoEmpleadosEmpF.php" target="_blank">
+                    <i class="material-icons left">assignment</i>Abrir Reporte
+                </a>
+            </div>
+        </div>
+        <!--Contenedor para las cards mostrando la información de x empleado-->
+        <form class="employee-cards row container" id="employee-form">
+            
+        </form>
+        <!--No borrar del codigo-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large " id="hasta_arriba">
+                <i class="large material-icons">arrow_upward</i>
+            </a>
+            <ul>
+        </div>
+        <!--Diseño de logout-->
+        <div id="cerrarSesionModal" class="modal">
+            <div class="fondo-modaldatos modal-content">
+                <div class="center-align">
+                    <h4>Confirmación de cerrar sesión</h4>
+                    <p>¿Desea cerrar sesión?</p>
+                </div>
+                <!--Contenido importante del modal-Boton de actualizar-->
+                <div class="center-align">
+                    <a href="index.html" class="waves-effect waves-light btn center-align"
+                        id="cerrarSesionModalbtn">Cerrar Sesión</a>
+                </div>
+                <!--Pie del modal-->
+                <div class="modal-footer" id="fondomodal-footer">
+                    <div class="left col offset-s1 m5 l4">
+                        <a class="waves-effect waves-ligth btn z-depth-2 modal-close cancelarEliminarempre"
+                            id="cancelar-cerrarSesion">
+                            <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modalAnadirEmpresa" class="modal">
+            <div class="modal-content">
+                <!--Titulo del modal-->
+                <h4 class="center-align">Escoger acceso a empresas</h4>
+                <!--Indicaciones del modal-->
+                <p class="center-align indempr_j">Seleccione las empresas a las cual tendrá acceso y deshabilite a las
+                    que no
+                    tendrá acceso</p>
+                <!--Formulario para añadir una empresa-->
+                <div id="contEmpresas" class="row ">
+                    <p class="col s12 m4 l3 offset-l1">
+                        <label>
+                            <input type="checkbox" checked="checked" />
+                            <span>Vitae Erat Vel Inc.</span>
+                        </label>
+                    </p>
+                    <p class="col s12 m4 l3 offset-l1">
+                        <label>
+                            <input type="checkbox" checked="checked" />
+                            <span>Sapien Molestie Orci Corp.</span>
+                        </label>
+                    </p>
+                    <p class="col s12 m4 l3 offset-l1">
+                        <label>
+                            <input type="checkbox" checked="checked" />
+                            <span>Eu Euismod Ltd</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="left col offset-s1 m5 l4">
+                            <a class="waves-effect waves-ligth btn z-depth-2 modal-close cerrarModalEmpresa"
+                                id="cancelar-Añadirempr">
+                                <i class="material-icons left">keyboard_arrow_left</i>Regresar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!--Contenedor del footer-->
+        <div class="container">
+            <div class="row">
+                <div class="col s2 offset-s2 m2 offset-m2 l1 offset-l4 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center" id="pagnavg-atr">
+                        <a class="tooltipped" data-position="left" data-tooltip="Regresar página anterior"><i
+                                class="material-icons medium">chevron_left</i></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center contnpag">
+                        <a><span class="pagnavg" id="pagnumeroi">1</span></a>
+                    </div>
+                </div>
+                <div class="col s2  m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center contnpag">
+                        <a><span class="pagnavg" id="pagnumerof">2</span></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center tooltipped" data-position="top" data-tooltip="¡Más muy pronto!">
+                        <a><span>...</span></a>
+                    </div>
+                </div>
+                <div class="col s2 m2 l1 center" id="contenedor-botonnavg">
+                    <div class="botonnavg-footer center" id="pagnavg-adl">
+                        <a class="tooltipped" data-position="right" data-tooltip="Página siguiente"><i
+                                class="material-icons medium">chevron_right</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="../resources/js/materialize.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../controllers/components.js"></script>
+    <script type="text/javascript" src="../controllers/validaciones.js"></script>
+    <script src="../controllers/empleados.js"></script>
+    <script type="text/javascript" src="../controllers/online.js"></script>
+</body>
+
+</html>
