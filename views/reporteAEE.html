@@ -44,7 +44,7 @@
         </div>
         <!--Tabla del reporte-->
         <div class="row container">
-            <div class="col s12 white">
+            <div class="col s12 white" id="tabalCO">
                 <table class="striped highlight centered  blue-grey lighten-1" id="tableC" data-page-length='10'>
                     <thead>
                         <th>Tipo Empleado</th>
@@ -58,34 +58,36 @@
                             <td>Brandon Weber</td>
                             <td>Activo</td>
                             <td>29281165-8</td>
-                            <td><i class="material-icons tdbtn" id="tr1">expand_more</i></td>
-                            <td>
-                                <table id="tr1" class="trexpand striped higligth centered blue-grey lighten-2">
-                                    <thead>
-                                        <th>Tipo Empleado</th>
-                                        <th>Nombre Competo Empleado</th>
-                                        <th>Estado</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Amet Lorem Ltd</td>
-                                            <td>GloriaMoran</td>
-                                            <td>30100987-9</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                            <td><i class="material-icons tdbtn" id="tr1">expand_more</i>
                             </td>
+                        <tr>
+                            <table id="tr1" class="tr1 trexpand hide striped higligth centered blue-grey lighten-2">
+                                <thead>
+                                    <th>Nombre de la empresa</th>
+                                    <th>Nombre del cliente</th>
+                                    <th>DUI o NIT</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Amet Lorem Ltd</td>
+                                        <td>GloriaMoran</td>
+                                        <td>30100987-9</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </tr>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <!--No borrar del codigo-->
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large " id="hasta_arriba">
-                <i class="large material-icons collapsible-heade">arrow_upward</i>
-            </a>
+        <div class="action-btn-wrapper">
+            <div class="fixed-action-btn my-custom-btn">
+                <a class="btn-floating btn-large rigth" id="hasta_arriba">
+                    <i class="large material-icons collapsible-heade">arrow_upward</i>
+                </a>
+            </div>
         </div>
     </main>
 
