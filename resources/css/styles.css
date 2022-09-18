@@ -4460,3 +4460,7 @@ input {
 .slidexplode.open{
   display: table-row;
 }
+
+.faq-return{
+  color: black;
+}
