@@ -91,3 +91,8 @@ function comprobarAmin() {
         }
     });
 }
+
+//Evento para que regrese a la página anterior
+document.getElementById('regresarbtn-perfil').addEventListener('click', function () {
+    history.go(-1)
+});
