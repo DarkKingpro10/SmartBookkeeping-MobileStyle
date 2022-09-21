@@ -5,7 +5,7 @@
 /*
 *   Constante para establecer la ruta del servidor.
 */
-const SERVER = 'http://localhost/despEsquivelM/api/';
+const SERVER = 'https://b062-190-87-160-225.ngrok.io/despEsquivelM/api/';
 const API = SERVER + 'dashboard/admins.php?action=';
 
 /*
