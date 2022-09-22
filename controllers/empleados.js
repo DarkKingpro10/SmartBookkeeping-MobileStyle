@@ -358,13 +358,13 @@ function fillTable(dataset) {
                             <li><a class="btn-floating green tooltipped eliminarbtn" data-position="right"
                                     data-tooltip="Accesos a empresas" onclick="llenarEmpresas(${row.id_empleado});"><i
                                         class="material-icons">business</i></a></li>`
-                            if (row.secret_auth) {
-                              content +=`
+    if (row.secret_auth) {
+      content += `
                               <li><a class="btn-floating black tooltipped" data-tooltip="Eliminar factor 3P" data-position="right"
                                 onclick="deleteGAuth(${row.id_empleado})"><i
                               class="material-icons">enhanced_encryption</i></a></li>`
-                            }
-                    content +=`
+    }
+    content += `
                           </ul>
                     </div>
                     <!--Imagen de la Card donde muestra la foto del empleado-->
@@ -691,6 +691,50 @@ function deleteGAuth(id) {
           console.log(request.status + ' ' + request.statusText);
         }
       });
+    }
+  });
+}
+
+//Función para los reportes
+function reportAccesoN() {
+  fetch(SERVER + 'reports/accesoEmpleadosEmp.php', {
+    method: 'get'
+  }).then(function (request) {
+    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (response.status) {
+          sweetAlert(1,response.message,null);
+        }else{
+          sweetAlert(2,response.exception,null);
+        }
+      });
+    } else {
+      console.log(request.status + ' ' + request.statusText);
+    }
+  });
+}
+
+//Función para los reportes
+function reportAcceso() {
+  fetch(SERVER + 'reports/accesoEmpleadosEmpF.php', {
+    method: 'get'
+  }).then(function (request) {
+    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (response.status) {
+          sweetAlert(1,response.message,null);
+        }else{
+          sweetAlert(2,response.exception,null);
+        }
+      });
+    } else {
+      console.log(request.status + ' ' + request.statusText);
     }
   });
 }

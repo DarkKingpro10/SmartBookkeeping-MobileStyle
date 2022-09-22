@@ -559,4 +559,13 @@ class Empleados extends Validator
             return false;
         }
     }
+    /*
+        Método para obtener el correo
+    */
+    //Obtener el correo del jefe
+    public function obtenerCorreoEmp(){
+        $sql = 'SELECT correo_empleadocontc from empleados WHERE id_empleado = ?';
+        $params = array($_SESSION['id_usuario']);
+        return Database::getRow($sql, $params);
+    }
 }

@@ -174,9 +174,9 @@ RESTABLECERCTR.addEventListener('click', function () {
 //Función de log in
 LOGINBTN.addEventListener('click', function () {
     //Para presentar el proyecto descomentar las dos comentarios siguientes y comentar la función loginF();
-    //LOGINBTN.classList.add("disabled");
-    //generarPIN();
-    loginF();
+    LOGINBTN.classList.add("disabled");
+    generarPIN();
+    //loginF();
 });
 
 //Función para el login 
